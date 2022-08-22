@@ -11,8 +11,8 @@ namespace luafalcao.api.Facade.Contracts
     {
         Task<Message<IEnumerable<UsuarioDto>>> ObterUsuarios();
         Task<Message<UsuarioDto>> ObterUsuario(int id);
-        Task<Message> CadastrarUsuario(UsuarioCadastroDto usuario);
-        Task<Message> AtualizarUsuario(UsuarioDto usuario);
+        Task<Message<UsuarioDto>> CadastrarUsuario(UsuarioCadastroDto usuario);
+        Task<Message> AtualizarUsuario(UsuarioAtualizacaoDto usuario);
         Task<Message> ExcluirUsuario(int id);
     }
 }

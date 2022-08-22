@@ -10,7 +10,7 @@ namespace luafalcao.api.Domain.Contracts.Services
     {
         Task<IEnumerable<Usuario>> ObterUsuarios();
         Task<Usuario> ObterUsuario(int id);
-        Task CadastrarUsuario(Usuario usuario);
+        Task<Usuario> CadastrarUsuario(Usuario usuario);
         Task AtualizarUsuario(Usuario usuario);
         Task RemoverUsuario(Usuario usuario);
     }

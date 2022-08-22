@@ -14,6 +14,6 @@ namespace luafalcao.api.Persistence.DTO
         public string Email { get; set; }
         public int HistoricoEscolarId { get; set; }
 
-        public Escolaridade Escolaridade { get; set; }
+        public EscolaridadeDto Escolaridade { get; set; }
     }
 }

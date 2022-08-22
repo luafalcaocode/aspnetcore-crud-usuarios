@@ -20,6 +20,15 @@ namespace luafalcao.api.Web.Mappers
         {
             CreateMap<UsuarioDto, Usuario>();
             CreateMap<Usuario, UsuarioDto>();
+
+            CreateMap<UsuarioCadastroDto, Usuario>();
+            CreateMap<UsuarioAtualizacaoDto, Usuario>()
+                .ForMember(c => c.UsuarioId, option => option.MapFrom(x => x.Id));
+
+            CreateMap<EscolaridadeCadastroDto, Escolaridade>();
+
+            CreateMap<Escolaridade, EscolaridadeDto>();
+            CreateMap<EscolaridadeDto, Escolaridade>();
         }
     }
 }

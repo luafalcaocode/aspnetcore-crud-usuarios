@@ -2,10 +2,10 @@
 using luafalcao.api.Domain.Contracts.Services;
 using luafalcao.api.Facade.Contracts;
 using luafalcao.api.Persistence.DTO;
+using luafalcao.api.Persistence.Entities;
 using luafalcao.api.Shared.Utils;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace luafalcao.api.Facade.Facades
@@ -68,14 +68,46 @@ namespace luafalcao.api.Facade.Facades
 
             return message;
         }
-        public Task<Message> AtualizarUsuario(UsuarioDto usuario)
+        public async Task<Message> AtualizarUsuario(UsuarioAtualizacaoDto usuario)
         {
-            throw new NotImplementedException();
+            var message = new Message();
+
+            try
+            {
+                await this.servico.AtualizarUsuario(this.mapper.Map<Usuario>(usuario));
+
+                message.Ok();
+            }
+            catch(Exception exception)
+            {
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
+            }
+
+            return message;
         }
 
-        public Task<Message> CadastrarUsuario(UsuarioCadastroDto usuario)
+        public async Task<Message<UsuarioDto>> CadastrarUsuario(UsuarioCadastroDto usuario)
         {
-            throw new NotImplementedException();
+            var message = new Message<UsuarioDto>();
+
+            try
+            {
+                var usuarioCadastrado = await this.servico.CadastrarUsuario(this.mapper.Map<Usuario>(usuario));
+
+                message.Created(this.mapper.Map<UsuarioDto>(usuarioCadastrado));
+            }
+            catch(Exception exception)
+            {
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
+            }
+
+            return message;
         }
 
         public Task<Message> ExcluirUsuario(int id)
