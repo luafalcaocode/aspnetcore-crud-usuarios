@@ -19,9 +19,4 @@
     <ProjectReference Include="..\luafalcao.api.Shared\luafalcao.api.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Facades\" />
-  </ItemGroup>
-
 </Project>

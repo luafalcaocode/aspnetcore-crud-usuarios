@@ -23,10 +23,7 @@ namespace luafalcao.api.Web
         {
             services.ConfigureCors();
             services.ConfigureDbContext(Configuration);
-            services.ConfigureMapper();
-        
-            services.ConfigureCache();
-         
+            services.ConfigureMapper();                    
             services.ConfigureFacades();
             services.ConfigureDomains();
             services.ConfigureRepositories();

@@ -19,12 +19,14 @@ namespace luafalcao.api.Persistence.Repositories
         public async Task<IEnumerable<Usuario>> ObterUsuarios()
         {
             return await FindAll()
+                .Include(x => x.Escolaridade)
                 .ToListAsync();
         }
 
         public async Task<Usuario> ObterUsuario(int usuarioId)
         {
             return await FindByCondition(filtro => filtro.UsuarioId.Equals(usuarioId))
+                .Include(x => x.Escolaridade)
                 .FirstOrDefaultAsync();
         }
 

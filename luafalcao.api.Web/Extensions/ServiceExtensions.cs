@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using luafalcao.api.Domain.Contracts.Services;
+using luafalcao.api.Domain.Services;
+using luafalcao.api.Facade.Contracts;
+using luafalcao.api.Facade.Facades;
 using luafalcao.api.Persistence.Contexts;
 using luafalcao.api.Persistence.Contracts.Repositories;
 using luafalcao.api.Persistence.Repositories;
@@ -32,12 +36,6 @@ namespace luafalcao.api.Web.Extensions
         public static void ConfigureMapper(this IServiceCollection services) =>
             services.AddAutoMapper(typeof(Startup));
 
-        public static void ConfigureRazor(this IServiceCollection services) =>
-           services.AddRazorPages(options =>
-           {
-
-           });
-
         public static void ConfigureSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(s =>
@@ -58,12 +56,12 @@ namespace luafalcao.api.Web.Extensions
 
         public static void ConfigureFacades(this IServiceCollection services)
         {
-           
+            services.AddScoped<IUsuarioFacade, UsuarioFacade>();
         }
 
         public static void ConfigureDomains(this IServiceCollection services)
         {
-           
+            services.AddScoped<IUsuarioService, UsuarioService>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection services)
